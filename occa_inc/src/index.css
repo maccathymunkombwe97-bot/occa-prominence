@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Fraunces', serif;
+  --font-mono-brand: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white min-h-screen selection:bg-amber-400 selection:text-black;
+  }
+}
+
+/* Auth enclave — manifest row reveal (staggered via inline animationDelay) */
+@keyframes manifest-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-manifest-in {
+  animation: manifest-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Auth enclave — ambient scanline sweep across the hero panel */
+@keyframes scanline-sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scanline {
+  animation: scanline-sweep 9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-manifest-in,
+  .animate-scanline {
+    animation: none !important;
+  }
+}
+
+/* Share button feedback animation: a quick playful pop + wiggle on the icon,
+   used in place of a "link copied" toast so the confirmation lives on the
+   button itself instead of interrupting the user with a notification. */
+@keyframes share-pop {
+  0% { transform: scale(1) rotate(0deg); }
+  35% { transform: scale(1.3) rotate(-10deg); }
+  60% { transform: scale(0.9) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-share-pop {
+  animation: share-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes check-in {
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-check-in {
+  animation: check-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Custom scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Occa Prominence",
+  "description": "Corporate ledger and console featuring dedicated search, saved posts storage, customizable settings, and corporate listing management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
